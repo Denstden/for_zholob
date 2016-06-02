@@ -18,14 +18,15 @@ public class Solver {
         this.points = points;
     }
 
-    public List<Edge> solve(){
-        List<Edge> edges = new ArrayList<>();
+    public List<Point> solve(){
+        List<Point> edges = new ArrayList<>();
         Edge edge;
         int i=0;
         int currentIndex = 0;
         Point prev = points.get(i++);
         prev.mark = true;
         Point current = null;
+        edges.add(prev);
 
         while (i < points.size()){
             if (i%2==1){
@@ -39,13 +40,13 @@ public class Solver {
                 currentIndex = points.indexOf(current);
             }
             current.mark = true;
-            edge = new Edge(prev, current);
+            //edge = new Edge(prev, current);
             //System.out.println(edge);
-            edges.add(edge);
+            edges.add(current);
             prev = current;
             i++;
         }
-        edges.add(new Edge(edges.get(edges.size()-1).getPoint2(), edges.get(0).getPoint1()));
+        /*edges.add(new Edge(edges.get(edges.size()-1).getPoint2(), edges.get(0).getPoint1()));*/
         return edges;
     }
 
